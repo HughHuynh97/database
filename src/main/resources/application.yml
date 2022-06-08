@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  sql:
+    init:
+      mode: always
+  flyway:
+    locations: classpath:data.sql
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    defer-datasource-initialization: true
+  datasource:
+    url: ${DATABASE_SOURCE:jdbc:mysql://localhost:3306/tritest?useSSL=false}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:tripro123}
+    driverClassName: com.mysql.cj.jdbc.Driver
+
