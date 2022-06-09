@@ -4,7 +4,7 @@
 FROM maven:3.8.5-openjdk-17
 COPY src /app/src
 COPY pom.xml /app
-RUN mvn -f /home/app/pom.xml clean package
+RUN mvn -f /app/pom.xml clean package
 
 #
 # Package stage
