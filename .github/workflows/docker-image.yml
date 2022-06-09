@@ -19,8 +19,8 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+          username: trivip002
+          password: 5419e1a3-a9dd-4f73-9488-8e692b2ea2e2
       - name: Checkout
         uses: actions/checkout@v2
       -
