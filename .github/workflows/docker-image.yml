@@ -18,8 +18,6 @@ jobs:
         with:
           username: trivip002
           password: 5419e1a3-a9dd-4f73-9488-8e692b2ea2e2 
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
