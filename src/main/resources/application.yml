@@ -12,8 +12,8 @@ spring:
     show-sql: true
     defer-datasource-initialization: true
   datasource:
-    url: ${DATABASE_SOURCE:jdbc:mysql://localhost:3306/tritest?useSSL=false}
-    username: ${DATABASE_USERNAME:root}
-    password: ${DATABASE_PASSWORD:tripro123}
+    url: ${DATABASE_SOURCE:jdbc:mysql://btf0h3lak0pxxlpnqi3j-mysql.services.clever-cloud.com:3306/btf0h3lak0pxxlpnqi3j?useSSL=false}
+    username: ${DATABASE_USERNAME:uinfs7okzorokd0b}
+    password: ${DATABASE_PASSWORD:SCw6cTXDz6ZqTilLiVW9}
     driverClassName: com.mysql.cj.jdbc.Driver
 
