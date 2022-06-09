@@ -9,8 +9,9 @@ RUN mvn -B dependency:resolve dependency:resolve-plugins
 #Copy source code
 COPY src /build/src
 # Build application
-RUN mvn package
+RUN mvn clean install
 
 FROM openjdk:17.0.2-oraclelinux8
-ADD build/target/test-0.0.1-SNAPSHOT.jar app.jar
+VOLUME /tmp
+ADD build/target/database-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
