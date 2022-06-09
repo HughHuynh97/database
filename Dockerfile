@@ -1,9 +1,8 @@
-#
 # Build stage
 #
 FROM maven:3.8.5-openjdk-17
-COPY src /src
-COPY pom.xml /
+COPY . /app/
+WORKDIR /app
 RUN mvn -f /pom.xml clean package
 
 #
