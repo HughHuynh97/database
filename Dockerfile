@@ -12,6 +12,5 @@ COPY src /build/src
 RUN mvn package
 
 FROM openjdk:17.0.2-oraclelinux8
-VOLUME /tmp
 ADD build/target/test-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
