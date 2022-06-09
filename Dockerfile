@@ -1,19 +1,4 @@
 FROM openjdk:17.0.2-oraclelinux8
-EXPOSE 8090
 VOLUME /tmp
-WORKDIR /code
-
-RUN apt-get update
-RUN apt-get install -y maven
-
-ADD pom.xml /code/pom.xml
-RUN ["mvn", "dependency:resolve"]
-RUN ["mvn", "verify"]
-
-# Adding source, compile and package into a fat jar
-ADD src /code/src
-RUN ["mvn", "package"]
-
 ADD target/database-0.0.1-SNAPSHOT.jar app.jar
-RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=container","-jar","/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
