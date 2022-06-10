@@ -53,13 +53,7 @@ jobs:
         projectKey: HughHuynh97_database
         url: https://sonarcloud.io/
         enablePullRequestDecoration: true
-        onlyConfig: true
-        
-    - name: SonarQube Quality Gate check
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      timeout-minutes: 5
-      env:
-       SONAR_TOKEN: 71533cd68f70929b0458cf743118b4d73dfede47          
+        onlyConfig: true    
    
     - name: Run sonar scanner
       uses: docker://openjdk:17.0.2-oraclelinux8
