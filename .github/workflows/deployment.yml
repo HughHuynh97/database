@@ -16,7 +16,7 @@ jobs:
       - name: Setup Maven Action
         uses: s4u/setup-maven-action@v1.2.1
         with:
-          java-version: 11
+          java-version: 17
           maven-version: 3.8.4
           
       - name: Build with Maven
@@ -47,8 +47,7 @@ jobs:
     - name: Set up JDK 17
       uses: actions/setup-java@v1
       with:
-        java-version: 17
-        maven-version: 3.8.4
+        java-version: 11
         
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
