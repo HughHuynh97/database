@@ -52,7 +52,7 @@ jobs:
     - name: Build and analyze
       env:
         GITHUB_TOKEN: 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
-        SONAR_TOKEN: 202c33e6f4c90d08c10e7207fc215e9adc57df59
+        SONAR_TOKEN: 629da0a3fccd8ab26415055ffc0a93bd687ad403
       run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=HughHuynh97_database
         
   pack:
