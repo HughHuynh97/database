@@ -49,10 +49,24 @@ jobs:
       with:
         java-version: 17
         
+    - name: Cache SonarQube packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
+        
+    - name: Cache Maven packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
     - name: Build and analyze
       env:
         GITHUB_TOKEN: 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
-        SONAR_TOKEN: 629da0a3fccd8ab26415055ffc0a93bd687ad403
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=HughHuynh97_database
         
   pack:
