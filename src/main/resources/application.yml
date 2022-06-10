@@ -12,7 +12,7 @@ spring:
     show-sql: true
     defer-datasource-initialization: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3307}/${MYSQL_DATABASE:dev}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:dev}
     username: ${MYSQL_USERNAME:root}
     password: ${MYSQL_PASSWORD:tripro123}
     driverClassName: com.mysql.cj.jdbc.Driver
