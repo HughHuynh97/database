@@ -36,27 +36,41 @@ jobs:
           name: jar-file
           path: target/
           
-  sonarqube:
+  quality-check:
     runs-on: ubuntu-latest
     needs: build
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+        
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      id: sonarconfig
+      with:
+        token: ${{ secrets.SONAR_TOKEN }}
+        projectName: database
+        projectKey: HughHuynh97_database
+        url: https://sonarcloud.io/
+        enablePullRequestDecoration: true
+        onlyConfig: true
+        
     - name: SonarQube Quality Gate check
       uses: sonarsource/sonarqube-quality-gate-action@master
       timeout-minutes: 5
       env:
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
-          
+   
+    - name: Run sonar scanner
+      uses: docker://openjdk:11.0.6-jdk-slim
+      with:
+        entrypoint: bash
+        args:
+            -c "mvn verify sonar:sonar -Dsonar.qualitygate.wait=true -Dsonar.projectKey=HughHuynh97_database"
+            
   pack:
     runs-on: ubuntu-latest
-    needs: [build, sonarqube]
+    needs: [build, quality-check]
     steps: 
       - name: Checkout
         uses: actions/checkout@v1
