@@ -63,7 +63,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2   
         
     - name: Build and analyze SonarCloud
-      run: mvn -B verify sonar:sonar -Dsonar.projectKey=HughHuynh97_database -Dsonar.organization=HughHuynh97_database -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=71533cd68f70929b0458cf743118b4d73dfede47
+      run: mvn verify sonar:sonar -Dsonar.projectKey=HughHuynh97_database -Dsonar.organization=HughHuynh97_database -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=71533cd68f70929b0458cf743118b4d73dfede47
       env:
         GITHUB_TOKEN: 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
         SONAR_TOKEN: 71533cd68f70929b0458cf743118b4d73dfede47
