@@ -1,7 +1,7 @@
 app="database"
 username="trivip002"
 docker network prune
-docker create network spring-net
+docker network create spring-net
 docker network connect spring-net mysqldb
 echo Build Image
 docker stop "$app" && docker rm -f "$app"
