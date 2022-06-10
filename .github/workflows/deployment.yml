@@ -60,7 +60,9 @@ jobs:
       with:
         entrypoint: bash
         args:
-            -c "mvn verify sonar:sonar -Dsonar.qualitygate.wait=true -Dsonar.projectKey=HughHuynh97_database"
+            -c "mvn verify sonar:sonar |
+            -Dsonar.login=71533cd68f70929b0458cf743118b4d73dfede47 |
+            -Dsonar.qualitygate.wait=true -Dsonar.projectKey=HughHuynh97_database"
             
   pack:
     runs-on: ubuntu-latest
