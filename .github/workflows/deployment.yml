@@ -25,6 +25,12 @@ jobs:
         with:
           path: ~/.m2/repository
           
+      - name: Artifact Jar
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: target/*.jar    
+          
   pack:
     runs-on: ubuntu-latest
     needs: build
