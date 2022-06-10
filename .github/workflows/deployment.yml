@@ -55,18 +55,20 @@ jobs:
         path: ~/.sonar/cache
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
-    - name: Cache Maven packages
-      uses: actions/cache@v1
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2   
         
-    - name: Build and analyze SonarCloud
-      run: mvn verify sonar:sonar -Dsonar.projectKey=HughHuynh97_database -Dsonar.organization=HughHuynh97_database -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=71533cd68f70929b0458cf743118b4d73dfede47
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
       env:
         GITHUB_TOKEN: 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
         SONAR_TOKEN: 71533cd68f70929b0458cf743118b4d73dfede47
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        
+    - name: SonarQube Quality Gate check
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      # Force to fail step after specific time
+      timeout-minutes: 5
+      env:
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}       
         
   pack:
     runs-on: ubuntu-latest
