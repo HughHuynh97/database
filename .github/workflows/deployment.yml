@@ -48,7 +48,7 @@ jobs:
       uses: sonarsource/sonarqube-scan-action@master
       id: sonarconfig
       with:
-        token: ${{ secrets.SONAR_TOKEN }}
+        token: 71533cd68f70929b0458cf743118b4d73dfede47
         projectName: database
         projectKey: HughHuynh97_database
         url: https://sonarcloud.io/
@@ -59,10 +59,10 @@ jobs:
       uses: sonarsource/sonarqube-quality-gate-action@master
       timeout-minutes: 5
       env:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
+       SONAR_TOKEN: 71533cd68f70929b0458cf743118b4d73dfede47          
    
     - name: Run sonar scanner
-      uses: docker://openjdk:11.0.6-jdk-slim
+      uses: docker://openjdk:17.0.2-oraclelinux8
       with:
         entrypoint: bash
         args:
