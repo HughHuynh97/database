@@ -42,8 +42,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 0
-            
+        fetch-depth: 0    
+       
     - name: Set up JDK 17
       uses: actions/setup-java@v1
       with:
@@ -56,19 +56,18 @@ jobs:
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
         
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
+    - name: Cache Maven packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
+    - name: Build and analyze
       env:
         GITHUB_TOKEN: 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
-        SONAR_TOKEN: 71533cd68f70929b0458cf743118b4d73dfede47
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        
-    - name: SonarQube Quality Gate check
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      # Force to fail step after specific time
-      timeout-minutes: 5
-      env:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}       
+        SONAR_TOKEN: 202c33e6f4c90d08c10e7207fc215e9adc57df59
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=HughHuynh97_database
         
   pack:
     runs-on: ubuntu-latest
