@@ -26,6 +26,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
           
       - name: Artifact Jar
         uses: actions/upload-artifact@v3
