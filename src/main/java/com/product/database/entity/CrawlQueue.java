@@ -5,7 +5,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "crawl_queue")
@@ -15,13 +14,10 @@ public class CrawlQueue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long crawlQueueId;
 
-    @Column(name = "start_date", columnDefinition = "DATETIME NOT NULL")
-    private Date startDate;
+    @Column(name = "request", nullable = false, columnDefinition = "text")
+    private String request;
 
-    @Column(name = "end_date", columnDefinition = "DATETIME NOT NULL")
-    private Date endDate;
-
-    @Column(name = "cause", columnDefinition = "text NOT NULL")
+    @Column(name = "cause", columnDefinition = "text")
     private String cause;
 
     @Column(name = "status", columnDefinition = "enum ('NEW','IN_PROGRESS','FAILED','DONE')")

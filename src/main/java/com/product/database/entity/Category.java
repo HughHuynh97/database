@@ -4,16 +4,19 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "category")
-public class Category {
+public class Category implements Serializable {
 
     @Id
     @Column(name = "cat_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long catId;
+    @Id
+    @Column(name = "provider")
+    private String provider;
 
     @Column(name = "code", columnDefinition = "varchar(100)")
     private String code;
@@ -23,9 +26,6 @@ public class Category {
 
     @Column(name = "image", columnDefinition = "varchar(100)")
     private String image;
-
-    @Column(name = "level")
-    private int level;
 
     @Column(name = "parent_cat_id")
     private Long parentCatId;
