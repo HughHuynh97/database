@@ -47,10 +47,18 @@ public class Product implements Serializable {
     private Long stock;
     @Column(name = "discount")
     private String discount;
+    @Column(name = "rating", columnDefinition = "text")
+    private String rating;
+    @Column(name = "like_count")
+    private Long likeCount;
+    @Column(name = "attributes", columnDefinition = "text")
+    private String attributes;
+    @Column(name = "skus", columnDefinition = "text")
+    private String sku;
     @Column(name = "provider_created_time", columnDefinition = "DATETIME NOT NULL")
     private Date providerCreatedTime;
     @Column(name = "status")
-    private String itemStatus;
+    private Integer status;
     @Column(name = "created_date", columnDefinition = "timestamp default now()")
     @CreationTimestamp
     private LocalDateTime createdDate;
