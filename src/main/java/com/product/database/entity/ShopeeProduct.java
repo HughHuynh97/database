@@ -9,14 +9,11 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Table(name = "product")
-public class Product implements Serializable {
+@Table(name = "shopee_product")
+public class ShopeeProduct implements Serializable {
     @Id
     @Column(name = "prod_id")
     private Long prodId;
-    @Id
-    @Column(name = "provider")
-    private String provider;
     @Column(name = "shop_id")
     private Long shopId;
     @Column(name = "name")

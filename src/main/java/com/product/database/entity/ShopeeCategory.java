@@ -8,15 +8,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "category")
-public class Category implements Serializable {
+@Table(name = "shopee_category")
+public class ShopeeCategory implements Serializable {
 
     @Id
     @Column(name = "cat_id")
     private Long catId;
-    @Id
-    @Column(name = "provider")
-    private String provider;
 
     @Column(name = "code", columnDefinition = "varchar(100)")
     private String code;
@@ -29,6 +26,9 @@ public class Category implements Serializable {
 
     @Column(name = "parent_cat_id")
     private Long parentCatId;
+
+    @Column(name = "total_count")
+    private Long totalCount;
 
     @Column(name = "created_date", columnDefinition = "timestamp default now()")
     @CreationTimestamp

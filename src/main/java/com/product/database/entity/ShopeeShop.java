@@ -4,14 +4,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "shop")
-public class Shop implements Serializable {
+@Table(name = "shopee_shop")
+public class ShopeeShop implements Serializable {
     @Id
     @Column(name = "shop_id")
     private Long shopId;
-    @Id
-    @Column(name = "provider")
-    private String provider;
     @Column(name = "user_id")
     private Long userId;
     @Column(name = "name")

@@ -8,7 +8,7 @@ Before you continue, ensure you meet the following requirements:
 ## Step 1: Run Maven ##
     mvn clean install
 ## Step 2: Build Docker ##
-    docker build -t database .
+    docker build -t trivip002/database .
 ## Step 3: Run mysql container ##
     docker run -p 3307:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=tripro123  -e MYSQL_DATABASE=dev mysql:8
 ## Step 4: create a network ##

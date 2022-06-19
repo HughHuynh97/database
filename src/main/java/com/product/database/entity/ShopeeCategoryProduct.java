@@ -7,8 +7,8 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "category_product")
-public class CategoryProduct implements Serializable {
+@Table(name = "shopee_category_product")
+public class ShopeeCategoryProduct implements Serializable {
     @Id
     @Column(name = "cat_id")
     private Long catId;
