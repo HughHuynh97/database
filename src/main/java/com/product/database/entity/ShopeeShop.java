@@ -1,7 +1,11 @@
 package com.product.database.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "shopee_shop")
@@ -39,4 +43,10 @@ public class ShopeeShop implements Serializable {
     private String country;
     @Column(name = "status")
     private Integer status;
+    @Column(name = "created_date", columnDefinition = "timestamp default now()")
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+    @Column(name = "last_updated_date", columnDefinition = "timestamp default now() on update now()")
+    @UpdateTimestamp
+    private LocalDateTime lastUpdatedDate;
 }
